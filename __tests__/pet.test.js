@@ -52,4 +52,10 @@ describe('pet constructor tests', () => {
         fido.walk()
         expect(fido.fitness).toBe(10);
     })
+
+    it("feed method decrease unger by 3",()=>{
+        fido.hunger=7;
+        fido.feed()
+        expect(fido.hunger).toBe(4);
+    })
  })
