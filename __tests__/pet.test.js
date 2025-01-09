@@ -41,4 +41,15 @@ describe('pet constructor tests', () => {
         fido.growUp()
         expect(fido.fitness).toBe(7);
     })
+
+    it("walk method should increase fitness by 4",()=>{
+        fido.fitness=1
+        fido.walk()
+        expect(fido.fitness).toBe(5);
+    })
+
+    it("fitness should not exceed 10",()=>{
+        fido.walk()
+        expect(fido.fitness).toBe(10);
+    })
  })
