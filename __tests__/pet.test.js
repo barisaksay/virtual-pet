@@ -90,7 +90,6 @@ describe('pet constructor tests', () => {
     })
 
     it("isAlive returns true",()=>{
-        
         expect(fido.isAlive).toBe(true);
     })
 
