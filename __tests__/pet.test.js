@@ -53,9 +53,60 @@ describe('pet constructor tests', () => {
         expect(fido.fitness).toBe(10);
     })
 
-    it("feed method decrease unger by 3",()=>{
+    it("feed method decrease hunger by 3",()=>{
         fido.hunger=7;
         fido.feed()
         expect(fido.hunger).toBe(4);
     })
+
+    it("hunger should not go below 0",()=>{
+        fido.feed()
+        expect(fido.fitness).toBe(0);
+    })
+
+
+    it("checkUp:fitness<=3 only should return I need walk",()=>{
+        fido.fitness=3;
+        fido.hunger=4;
+        expect(fido.checkUp()).toEqual("I need a walk");
+    })
+
+    it("checkUp:hunger>=5 only should return I need walk",()=>{
+        fido.hunger=5;
+        expect(fido.checkUp()).toEqual("I am hungry");
+    })
+
+
+    it("checkUp:hunger>=5 && fitness<=3 should return I am hungry AND I need a walk",()=>{
+        fido.hunger=5;
+        fido.fitness=3;
+        expect(fido.checkUp()).toEqual("I am hungry AND I need a walk");
+    })
+
+    it("checkUp:hunger<5&& fitness>3 should return I feel great!",()=>{
+        fido.hunger=3;
+        fido.fitness=7;
+        expect(fido.checkUp()).toEqual("I feel great!");
+    })
+
+    it("isAlive returns true",()=>{
+        
+        expect(fido.isAlive).toBe(true);
+    })
+
+    it("isAlive returns false: condition hunger",()=>{
+        fido.hunger=11
+        expect(fido.isAlive).toBe(false);
+    })
+
+    it("isAlive returns false: condition fitness",()=>{
+        fido.fitness=0
+        expect(fido.isAlive).toBe(false);
+    })
+
+    it("isAlive returns false: condition age",()=>{
+        fido.age=30
+        expect(fido.isAlive).toBe(false);
+    })
+    
  })
